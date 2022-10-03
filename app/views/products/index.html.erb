@@ -1,0 +1,25 @@
+<center>
+	<div id="products">
+		<table class="table">
+    <thead>
+      <tr>
+        <th>Product Name</th>
+        <th>Product quantity</th>
+        <th>Product Price</th>
+        <th>Show</th>
+      </tr>
+    </thead>
+		<% @products.each do |product| %>
+			<tr>
+				<td><%= product.name %></td>
+				<td><%=product.quantity %></td>
+				<td><%=product.price %></td>
+			
+				<td><%= link_to "Show this Product", product_path(product) %></td>
+				</tr>
+		<% end %>
+	</table>
+	</div>
+
+<a href="<%= new_product_path %>"><button type="button" class="btn btn-primary">New Product</button>
+</center>

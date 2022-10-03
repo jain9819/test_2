@@ -1,0 +1,63 @@
+<h1>Show Post </h1>
+
+<table class="table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Back</th>
+        <th>Edit</th>
+        <th>Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="success">
+        <td><%= @post.user.get_name %></td>
+        <td><%= @post.title%></td>
+        <td><%= @post.description%></td>
+        <td><a href="<%= posts_path %>"><button type="button" class="btn btn-primary">Back to posts</button></a>
+		</td>
+		<td>
+		<%= link_to "Edit this post", edit_post_path(@post) %></td>
+    <td>
+    <%= button_to "Destroy this post", @post, method: :delete %>
+		</td>
+      </tr>      
+    </tbody>
+</table>
+
+<br /> <br />
+  <%if @post.comments.present?%>
+    <h1>Comments</h1>
+    <table class="table">
+        <thead>
+          <tr>
+            <th>Comment's_ID</th>
+            <th>Comment's_Description</th>
+            <th>Edit</th>
+            <th>Delete</th>
+          </tr>
+        </thead>
+
+          <% @post.comments.each do |comment|%>
+            <tbody>
+              <tr class="success">
+                 <td><%= comment.id%></td>
+                <td><%= comment.description%></td>
+               
+                <td>
+
+                <%= link_to "Edit this comment", edit_post_comment_path(@post, comment) %>
+              </td>
+              <td>
+
+                 <%= button_to "Destroy this comment", post_comment_path(@post,comment), method: :delete %>
+   
+                </td>
+              </tr>      
+            </tbody>
+          <% end %>
+      
+      </table>
+  <% end %>

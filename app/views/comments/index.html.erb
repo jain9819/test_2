@@ -1,0 +1,16 @@
+<h1>Comment#Index</h1>
+
+<div id="comments">
+	<% @comment.each do |comment| %>
+		<div id="dom_comment">
+			<h4>Description: <%=comment.description %></h4>
+		</div>
+
+		<%= link_to "Show this comment", "comment_path(comment)" %>
+		
+		
+	<% end %>
+</div>
+
+<a href="<%= new_comment_path %>"><button type="button" class="btn btn-primary">New comment</button>
+	</a>

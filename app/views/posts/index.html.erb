@@ -1,0 +1,38 @@
+<% @posts.each do |post| %>
+
+<div class="container mt-5">
+	<div class="d-flex justify-content-center row">
+		<div class="col-md-12">
+			<div class="d-flex flex-column comment-section">
+				<div class="bg-white p-2">
+					<div class="d-flex flex-row user-info"><img class="rounded-circle" src="https://i.imgur.com/RpzrMR2.jpg" width="40">
+						<span class="d-block font-weight-bold name"><%= User.get_name(post.user)%></span>
+					</div>
+					<div class="mt-2">
+						<p><%= post.title %></p>
+						<p class="comment-text"><%=post.description %>.</p>
+					</div>
+				</div>
+				<%= render "/posts/comments", post: post%>
+			</div>
+		</div>
+	</div>
+
+<br>
+<% end %>
+
+<a href="<%= new_post_path %>"><button type="button" class="btn btn-primary">New Post</button>
+	</a>
+	</div>
+
+
+
+
+
+
+
+
+
+
+
+

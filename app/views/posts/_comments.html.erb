@@ -1,0 +1,52 @@
+<div class="bg-white">
+	<div class="d-flex flex-row fs-12">
+		<div class="like p-2 cursor"><i class="fa fa-commenting-o"></i><span class="ml-1">
+			<p>Comments:</p>
+			<%if post.comments.present?%>
+			<table>
+				<%post.comments.each do |comment|%>
+				<tr>
+					<td><%= comment.id%> - <%= comment.description%></td>
+					<td>&nbsp;&nbsp; <%= link_to "Edit", edit_post_comment_path(post, comment), class: "button_to" %>
+					</td>
+					<td><%= button_to "Delete", post_comment_path(post,comment), method: :delete %></td>
+				</tr>
+
+
+				<tr>
+					<table style="color:red;">
+						<tr><td>Replies of comment: <%= comment.id%></td></tr>
+						<%comment.replies.each do |reply|%>
+							<tr>
+								<td><%= reply.id%> - <%= reply.description%></td>
+							</tr>
+
+						<%end%>
+					</table>
+				</tr>
+					<%#= form_tag post_comment_replies_path(post) do %>  
+					<%#= text_field_tag :description %> 
+					<%#= submit_tag "Reply" %>    
+					<%# end %>
+
+				<%end%>
+			</table>
+			<%end%>
+		</div><br>
+	</div>
+</div>
+
+<div class="bg-white">
+	<div class="d-flex flex-row fs-12">
+		<div class="like p-2 cursor"><i class="fa fa-commenting-o"></i><span class="ml-1">
+
+			<div class="like p-2 cursor"><i class="fa fa-commenting-o"></i><span class="ml-1"><%= link_to "Show this post", post_path(post) %>
+			</span>
+		</div>
+
+		<%= form_tag post_comments_path(post) do %>  
+		<%= text_field_tag :description %> 
+		<%= submit_tag "comment" %>    
+		<% end %>  
+	</div>
+</div>

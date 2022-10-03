@@ -1,0 +1,27 @@
+<h1>Show Comment </h1>
+
+<table class="table">
+    <thead>
+      <tr>
+        <th>Post Id</th>
+        <th>Description</th>
+        <th>Back</th>
+        <th>Edit/Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="success">
+        <td><%= @comment.post_id%></td>
+        <td><%= @comment.description%></td>
+       <td> <%= link_to "Show this post", post_path(@post) %></td>
+        <!-- <td><a href="<%#= comments_path %>"><button type="button" class="btn btn-primary">Back to comments</button></a> -->
+		</td>
+		<td>
+		<%= link_to "Edit this comment", edit_post_comment_path(@post, @comment) %><br />
+    <%= link_to "Delete this comment", post_comment_path(@post,@comment), method: :delete %>
+
+		
+		</td>
+      </tr>      
+    </tbody>
+  </table>
